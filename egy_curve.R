@@ -7,7 +7,7 @@ library(ggthemes)
 # Link: https://www.facebook.com/egypt.mohp
 
 # Importing data
-egy <- read.csv("Egypt.csv")
+egy <- read.csv("Egypt-data/Egypt.csv")
 attach(egy)
 View(egy)
 
@@ -33,7 +33,7 @@ class(egypt_long$date)
 
 # Plotting the curve
 
-b <- ggplot(data = egypt_long,
+(b <- ggplot(data = egypt_long,
     aes(
       x= date,
       y= count,
@@ -53,7 +53,7 @@ b <- ggplot(data = egypt_long,
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         plot.title = element_blank(),
-        legend.title = element_blank())
+        legend.title = element_blank()))
 
 
 # Plotting total cases, recovery and total deaths
@@ -73,7 +73,7 @@ class(egypt_long2$date)
 
 # Plotting the curve
 
-c <- ggplot(data = egypt_long2,
+(c <- ggplot(data = egypt_long2,
        aes(
          x= date,
          y= count,
@@ -95,7 +95,7 @@ c <- ggplot(data = egypt_long2,
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         plot.title = element_blank(),
-        legend.title = element_blank())
+        legend.title = element_blank()))
 
 
 # Plotting total, current and new cases
@@ -115,7 +115,7 @@ class(egypt_long3$date)
 
 # Plotting the curve
 
-a <- ggplot(data = egypt_long3,
+(a <- ggplot(data = egypt_long3,
        aes(
          x= date,
          y= count,
@@ -147,10 +147,11 @@ a <- ggplot(data = egypt_long3,
                                      color = "indianred3"),
         legend.title = element_text(face = "bold",
                                     size = 20,
-                                    color = "royalblue4"))
-a
+                                    color = "royalblue4")))
+
 # Creating a grid
 
 library(gridExtra)
 
 grid.arrange(a, arrangeGrob(b, c, ncol = 2), nrow = 2)
+
