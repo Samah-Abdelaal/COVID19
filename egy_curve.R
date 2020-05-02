@@ -11,6 +11,11 @@ egy <- read.csv("Egypt-data/Egypt.csv")
 attach(egy)
 View(egy)
 
+# Converting datetime variable
+
+egy$date <- as.Date(egy$date, format = "%m/%d/%Y")
+class(egy$date)
+
 # Calculating current cases
 
 egy <- egy %>%
