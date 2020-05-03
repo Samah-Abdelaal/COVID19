@@ -31,11 +31,6 @@ egypt_long <- egy %>%
 
 head(egypt_long)
 
-# Converting datetime variable
-
-egypt_long$date <- as.POSIXct(egypt_long$date, format = "%m/%d/%Y")
-class(egypt_long$date)
-
 # Plotting the curve
 
 (b <- ggplot(data = egypt_long,
@@ -70,11 +65,6 @@ egypt_long2 <- egy %>%
   pivot_longer(-date, names_to = "COVID19", values_to = "count")
 
 head(egypt_long2)
-
-# Converting datetime variable
-
-egypt_long2$date <- as.POSIXct(egypt_long2$date, format = "%m/%d/%Y")
-class(egypt_long2$date)
 
 # Plotting the curve
 
@@ -112,11 +102,6 @@ egypt_long3 <- egy %>%
   pivot_longer(-date, names_to = "COVID19", values_to = "count")
 
 head(egypt_long3)
-
-# Converting datetime variable
-
-egypt_long3$date <- as.POSIXct(egypt_long3$date, format = "%m/%d/%Y")
-class(egypt_long3$date)
 
 # Plotting the curve
 
