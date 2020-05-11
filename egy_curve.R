@@ -21,6 +21,22 @@ class(egy$date)
 egy <- egy %>%
   mutate(current_cases = all_cases- (recovered + all_deaths))
 
+# Calculating Case-Fatality Rate
+
+egy %>%
+  mutate(cfr = (all_deaths / all_cases) * 100) %>%
+  ggplot(
+    aes(x = date,
+        y = cfr)
+  ) + geom_line() +
+  geom_path(col = "red2",
+            size = 1.5) +
+  labs(title = "Egypt's Case-Fatality Rate",
+       subtitle = "March 13 to May 13") +
+  theme_wsj() +
+  theme(plot.title = element_text(size = 20),
+      plot.subtitle = element_text(size = 15))
+
 # Plotting new cases and new deaths
 
 # Tidying data for the plot
