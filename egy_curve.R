@@ -23,7 +23,7 @@ egy <- egy %>%
 
 # Calculating Case-Fatality Rate
 
-egy %>%
+(d <- egy %>%
   mutate(cfr = (all_deaths / all_cases) * 100) %>%
   ggplot(
     aes(x = date,
@@ -33,9 +33,24 @@ egy %>%
             size = 1.5) +
   labs(title = "Egypt's Case-Fatality Rate",
        subtitle = "March 13 to May 13") +
-  theme_wsj() +
-  theme(plot.title = element_text(size = 20),
-      plot.subtitle = element_text(size = 15))
+  theme_fivethirtyeight() +
+  theme(plot.title = element_text(size = 15),
+      plot.subtitle = element_text(size = 10)))
+
+# Plotting new cases
+
+(n <- egy %>%
+  ggplot(
+    aes(x = date,
+        y = new_cases)
+  ) + geom_line() +
+  geom_path(col = "red2",
+            size = 1.5) +
+  labs(title = "Egypt's Epidemic Curve",
+       subtitle = "March 13 to May 13") +
+  theme_fivethirtyeight() +
+  theme(plot.title = element_text(size = 15),
+        plot.subtitle = element_text(size = 10)))
 
 # Plotting new cases and new deaths
 
@@ -155,9 +170,10 @@ head(egypt_long3)
                                     size = 20,
                                     color = "royalblue4")))
 
-# Creating a grid
+# Creating grids
 
 library(gridExtra)
 
 grid.arrange(a, arrangeGrob(b, c, ncol = 2), nrow = 2)
 
+grid.arrange(n, d, nrow = 2)
