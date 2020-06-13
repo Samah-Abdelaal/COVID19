@@ -1,6 +1,7 @@
 library(tidyverse)
 library(ggplot2)
 library(ggthemes)
+library(ggcharts)
 
 # The data used is gathered from the Egyptian Ministry
 # of Health and Population's Facebook page
@@ -29,11 +30,11 @@ egy <- egy %>%
     aes(x = date,
         y = cfr)
   ) + geom_line() +
-  geom_path(col = "red2",
+  geom_path(col = "darkorange",
             size = 1.5) +
   labs(title = "Egypt's Case-Fatality Rate",
-       subtitle = "March 13 to May 13") +
-  theme_fivethirtyeight() +
+       subtitle = "March 13 to June 13") +
+  theme_ng(grid = "XY") +
   theme(plot.title = element_text(size = 15),
       plot.subtitle = element_text(size = 10)))
 
@@ -44,11 +45,11 @@ egy <- egy %>%
     aes(x = date,
         y = new_cases)
   ) + geom_line() +
-  geom_path(col = "red2",
+  geom_path(col = "darkorange",
             size = 1.5) +
   labs(title = "Egypt's Epidemic Curve",
-       subtitle = "March 13 to May 13") +
-  theme_fivethirtyeight() +
+       subtitle = "March 13 to June 13") +
+  theme_ng(grid = "XY") +
   theme(plot.title = element_text(size = 15),
         plot.subtitle = element_text(size = 10)))
 
@@ -80,7 +81,7 @@ head(egypt_long)
                                  "New deaths"),
                       values = c("salmon",
                                  "cyan3")) +
-  theme_economist() +
+  theme_ggcharts(grid = "XY") +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         plot.title = element_blank(),
@@ -117,7 +118,7 @@ head(egypt_long2)
                       values = c("salmon",
                                  "springgreen3",
                                  "cyan3")) +
-  theme_economist() +
+  theme_ggcharts(grid = "XY") +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         plot.title = element_blank(),
@@ -146,7 +147,7 @@ head(egypt_long3)
   geom_line() +
   geom_path(size = 1) +
   labs(title = "Egypt: Epidemic curve",
-       subtitle = "March 13 to April 30",
+       subtitle = "March 13 to June 13",
        x = "Date",
        y = "Count") +
   scale_colour_manual(labels = c("Total cases",
@@ -155,20 +156,20 @@ head(egypt_long3)
                       values = c("salmon",
                                  "springgreen3",
                                  "cyan3")) +
-  theme_economist() +
+  theme_ggcharts(grid = "XY") +
   theme(axis.title.x = element_text(face = "bold",
                                     size = 12,
-                                    color = "royalblue4"),
+                                    color = "royalblue"),
         axis.title.y = element_text(face = "bold",
                                     size = 12,
-                                    color = "royalblue4"),
+                                    color = "royalblue"),
         plot.title = element_text(size = 20,
-                                  color = "indianred3"),
+                                  color = "indianred"),
         plot.subtitle = element_text(size = 12,
-                                     color = "indianred3"),
+                                     color = "indianred"),
         legend.title = element_text(face = "bold",
                                     size = 20,
-                                    color = "royalblue4")))
+                                    color = "royalblue")))
 
 # Creating grids
 
